@@ -14,6 +14,40 @@ export function Login() {
 
   return (
     <div className="login">
+      {/* Dynamic scoped styles for the button animation */}
+      <style>{`
+        .btn-animated {
+          position: relative;
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+          overflow: hidden;
+        }
+
+        .btn-animated .arrow {
+          display: inline-block;
+          transition: transform 0.3s ease;
+          margin-right: 6px;
+        }
+
+        /* Hover State */
+        .btn-animated:hover {
+          transform: translateY(-2px) scale(1.02);
+          box-shadow: 0 0 15px var(--c, rgba(255, 255, 255, 0.3));
+          letter-spacing: 3px;
+          filter: brightness(1.2);
+        }
+
+        .btn-animated:hover .arrow {
+          transform: translateX(4px);
+        }
+
+        /* Active/Click State */
+        .btn-animated:active {
+          transform: translateY(1px) scale(0.98);
+          box-shadow: 0 0 5px var(--c, rgba(255, 255, 255, 0.1));
+        }
+      `}</style>
+
       <div className="mask">🜲</div>
       <div className="crest">
         THE GODS CTF
@@ -61,7 +95,15 @@ export function Login() {
         </div>
       </div>
 
-      <button className="btn" onClick={() => enter(mode, char)}>▶ ENTER ASUROS</button>
+      {/* Enhanced Button */}
+      <button 
+        className="btn btn-animated" 
+        onClick={() => enter(mode, char)}
+        style={{ "--c": "var(--ink-main)" } as CSSProperties} // Optional fallback if your CSS uses specific theme variables
+      >
+        <span className="arrow">▶</span> ENTER ASUROS
+      </button>
+
       <div style={{ color: "var(--ink-dim)", fontSize: 11, letterSpacing: 2 }}>"THE DEAD CAN TALK."</div>
     </div>
   );
