@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>THE GODS CTF · AsurOS Forensic Terminal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <!-- Leaflet (geo-map). Degrades gracefully if offline. -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="flicker">
+
+  <!-- BOOT -->
+  <div id="boot"></div>
+
+  <!-- LOGIN -->
+  <div id="login">
+    <div class="mask">🜲</div>
+    <div class="crest">THE GODS CTF<small>FORENSIC DEDUCTION ENGINE · ASUROS</small></div>
+    <div class="login-card">
+      <h2>OPERATOR AUTHENTICATION</h2>
+      <p>CBI · Forensic Cyber Division — restricted access</p>
+      <div class="field"><span>operator</span><b>Nikhil Nair</b></div>
+      <div class="field"><span>clearance</span><b>OMEGA</b></div>
+      <div class="field"><span>operation</span><b>Project Equilibrium</b></div>
+      <div class="modes">
+        <div class="mode student" id="modeStudent">
+          <div class="t">STUDENT</div>
+          <div class="d">Guided. Red herrings flagged, multiple-choice assist, cheaper hints. Learn the method.</div>
+        </div>
+        <div class="mode pro" id="modePro">
+          <div class="t">PROFESSIONAL</div>
+          <div class="d">Raw. No markers, no MCQ — free-text flags only. Trust nothing. Earn your rank.</div>
+        </div>
+      </div>
+      <button class="btn" id="enterBtn">▶ ENTER ASUROS</button>
+    </div>
+    <div style="color:var(--ink-dim);font-size:11px;letter-spacing:2px">"THE DEAD CAN TALK."</div>
+  </div>
+
+  <!-- DESKTOP -->
+  <div id="desktop">
+    <div id="topbar">
+      <span class="brand">ASUR<b>OS</b></span>
+      <span class="pill">operator <b id="opVal">N. Nair</b></span>
+      <span class="pill" id="rankPill">rank <b id="rankVal">🔰 Rookie</b></span>
+      <span class="pill">score <b id="scoreVal">0 pts</b></span>
+      <span class="pill">solved <b id="solvedVal">0/14</b></span>
+      <span class="pill">mode <b id="modeVal">STUDENT</b></span>
+      <span class="pill" id="nextRankPill"><span id="nextRank">next: Field Agent @ 250</span></span>
+      <span class="spacer"></span>
+      <span class="pill" id="mutePill" title="toggle sound" style="cursor:pointer">🔊 <b id="muteVal">on</b></span>
+      <span id="clock">--:--:--</span>
+    </div>
+
+    <div id="stage">
+      <div id="launcher">
+        <div class="dicon" data-app="terminal"><span class="g">🖥</span><span class="lbl">Terminal</span></div>
+        <div class="dicon" data-app="cases"><span class="g">🗂</span><span class="lbl">Case Files</span></div>
+        <div class="dicon" data-app="network"><span class="g">🌐</span><span class="lbl">Server Map</span></div>
+        <div class="dicon" data-app="map"><span class="g">🗺</span><span class="lbl">Geo-Map</span></div>
+        <div class="dicon" data-app="lab"><span class="g">🧪</span><span class="lbl">Forensic Lab</span></div>
+      </div>
+      <div class="wm">
+        <div class="big">🜲 ASUR</div>
+        WELCOME TO YOUR DARK SIDE<br>PROJECT EQUILIBRIUM
+      </div>
+    </div>
+
+    <div id="taskbar">
+      <button class="start" id="startBtn">⊞ CASES</button>
+      <div id="tasks" style="display:flex;gap:8px"></div>
+      <span class="spacer"></span>
+      <span id="taskhint">dbl-click an icon · `help` in terminal</span>
+      <button class="start" id="resetBtn" style="color:var(--ink-dim)">⟲ reset</button>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <!-- VICTORY -->
+  <div id="victory">
+    <div class="vic-card">
+      <div class="mask" style="font-size:62px">🜲</div>
+      <div class="vic-title">OPERATION EQUILIBRIUM</div>
+      <div class="vic-sub">— C O M P L E T E —</div>
+      <div class="vic-stats" id="vicStats"></div>
+      <div class="vic-quote">"For Kali, every ending is a new beginning."</div>
+      <button class="btn ghost" id="vicClose" style="width:auto;padding:11px 26px">▣ RETURN TO ASUROS</button>
+    </div>
+  </div>
+
+  <!-- data -->
+  <script src="data/world.js"></script>
+  <script src="data/challenges.js"></script>
+  <!-- engine -->
+  <script src="js/audio.js"></script>
+  <script src="js/wm.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/apps.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
